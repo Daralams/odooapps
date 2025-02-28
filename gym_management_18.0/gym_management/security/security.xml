@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="module_category_gym_management" model="ir.module.category">
+        <field name="name">Gym Management</field>
+    </record>
+    <record id="group_administor" model="res.groups">
+        <field name="name">Administrator / Owner</field>
+        <field name="category_id" ref="gym_management.module_category_gym_management"/>
+    </record>
+    <record id="group_trainer" model="res.groups">
+        <field name="name">Trainer</field>
+        <field name="category_id" ref="gym_management.module_category_gym_management"/>
+    </record>
+    <record id="group_member" model="res.groups">
+        <field name="name">Member</field>
+        <field name="category_id" ref="gym_management.module_category_gym_management"/>
+    </record>
+</odoo>

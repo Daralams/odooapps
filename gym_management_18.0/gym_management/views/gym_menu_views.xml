@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem
+        id="gym_management_root_menu"
+        name="Gym Management"
+    />
+    <!-- partner -->
+    <menuitem
+        id="gym_management_members_nav_menu"
+        name="Members"
+        parent="gym_management_root_menu"
+    />
+    <menuitem
+        id="gym_management_member_sub_menu"
+        name="Member"
+        action="gym_member_action"
+        parent="gym_management_members_nav_menu"
+    />
+    <menuitem
+        id="gym_management_trainer_sub_menu"
+        name="Trainer"
+        action="gym_trainer_action"
+        parent="gym_management_members_nav_menu"
+    />
+    <!-- membership -->
+    <menuitem
+        id="gym_management_membership_nav_menu"
+        name="Membership"
+        parent="gym_management_root_menu"
+    />
+    <menuitem
+        id="gym_management_membership_type_sub_menu"
+        name="Membership Type"
+        action="gym_membership_type_action"
+        parent="gym_management_membership_nav_menu"
+    />
+</odoo>

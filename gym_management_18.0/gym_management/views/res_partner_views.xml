@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <record id="res_partner_view_search_inherit" model="ir.ui.view">
+    <field name="name">res.partner.view.search.inherit</field>
+    <field name="model">res.partner</field>
+    <field name="inherit_id" ref="base.view_res_partner_filter"/>
+    <field name="arch" type="xml">
+      <xpath expr="//filter[@name='type_person']" position="before">
+        <filter name="male" string="Male" domain="[('gender', '=', 'male')]"/>
+        <filter name="female" string="Female" domain="[('gender', '=', 'female')]"/>
+        <separator/>
+      </xpath>
+    </field>
+  </record>
+  <record id="res_partner_view_form_inherit" model="ir.ui.view">
+    <field name="name">res.partner.view.form.inherit</field>
+    <field name="model">res.partner</field>
+    <field name="inherit_id" ref="base.view_partner_form"/>
+    <field name="arch" type="xml">
+      <xpath expr="//field[@name='function']" position="before">
+        <field name="gender" widget="radio"/>
+        <field name="age" />
+        <field name="partner_role" widget="radio"/>
+        <field name="support_trainer" widget="many2one_avatar_user" invisible="partner_role == 'trainer'"/>
+        <field name="trainer_skills" widget="many2many_tags" options="{'color_field': 'color'}" invisible="partner_role == 'member'"/>
+      </xpath>
+    </field>
+  </record>
+  <record id="gym_member_action" model="ir.actions.act_window">
+    <field name="name">Member</field>
+    <field name="res_model">res.partner</field>
+    <field name="view_mode">kanban,list,form</field>
+    <field name="domain">[('partner_role', '=', 'member')]</field>
+    <field name="help" type="html">
+      <p class="o_view_nocontent_smiling_face">
+            Create a Gym Member
+          </p>
+    </field>
+  </record>
+  <record id="gym_trainer_action" model="ir.actions.act_window">
+    <field name="name">Trainer</field>
+    <field name="res_model">res.partner</field>
+    <field name="view_mode">kanban,list,form</field>
+    <field name="domain">[('partner_role', '=', 'trainer')]</field>
+    <field name="help" type="html">
+      <p class="o_view_nocontent_smiling_face">
+            Create a Gym Trainer
+          </p>
+    </field>
+  </record>
+</odoo>

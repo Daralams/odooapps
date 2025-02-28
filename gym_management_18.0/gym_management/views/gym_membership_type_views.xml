@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="gym_membership_type_view_search" model="ir.ui.view">
+        <field name="name">gym.membership.type.view.search</field>
+        <field name="model">gym.membership.type</field>
+        <field name="arch" type="xml">
+            <search string="Search">
+                <filter name="active" string="Active" domain="[('active', '=', True)]" />
+                <filter name="inactive" string="Inactive" domain="[('active', '=', False)]" />
+            </search>
+        </field>
+    </record>
+    <record id="gym_membership_type_view_tree" model="ir.ui.view">
+        <field name="name">gym.membership.type.view.tree</field>
+        <field name="model">gym.membership.type</field>
+        <field name="arch" type="xml">
+            <list string="Membership Type">
+                <field name="name" />
+                <field name="duration" />
+                <field name="fees" />
+                <field name="active" />
+            </list>
+        </field>
+    </record>
+    <record id="gym_membership_type_view_form" model="ir.ui.view">
+        <field name="name">gym.membership.type.view.form</field>
+        <field name="model">gym.membership.type</field>
+        <field name="arch" type="xml">
+            <form string="Membership Type">
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" placeholder="e.g. Premium"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="duration" />
+                            <field name="fees" />
+                        </group>
+                        <group>
+                            <field name="active" widget="boolean_toggle"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page name="Benefits">
+                            <field name="benefits" />
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="gym_membership_type_action" model="ir.actions.act_window">
+        <field name="name">Membership Type</field>
+        <field name="res_model">gym.membership.type</field>
+        <field name="view_mode">list,form</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a Gym Membership Type
+            </p>
+        </field>
+    </record>
+</odoo>
