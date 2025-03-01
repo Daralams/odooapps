@@ -34,4 +34,16 @@
         action="gym_membership_type_action"
         parent="gym_management_membership_nav_menu"
     />
+    <!-- member and trainer attendances -->
+    <menuitem
+        id="gym_management_attendances_nav_menu"
+        name="Attendances"
+        parent="gym_management_root_menu"
+    />
+    <menuitem
+        id="gym_management_trainer_attendances_sub_menu"
+        name="Trainer"
+        action="gym_trainer_attendances_action"
+        parent="gym_management_attendances_nav_menu"
+    />
 </odoo>
