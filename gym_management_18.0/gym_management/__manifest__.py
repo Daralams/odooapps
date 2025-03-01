@@ -26,6 +26,7 @@
         'security/security.xml',
         'views/gym_menu_views.xml',
         'views/gym_trainer_attendances_views.xml',
+        'views/gym_member_attendances_views.xml',
         'views/res_partner_views.xml',
         'views/gym_membership_type_views.xml',
         'views/templates.xml',

@@ -31,7 +31,7 @@
                             <field name="name" placeholder="e.g. Mangandaralam"/>
                         </h1>
                     </div>
-                    <group>
+                    <group string="Attendance time">
                         <group>
                             <field name="working_hours" />
                             <field name="check_in" />
