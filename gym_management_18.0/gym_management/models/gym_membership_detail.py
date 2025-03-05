@@ -1,0 +1,32 @@
+from odoo import models, fields, api, _
+
+class GymMembershipDetail(models.Model):
+    _name = 'gym.membership.detail'
+    _order = 'id desc'
+
+    name = fields.Char(string="Membership No", default=lambda self: _("New"), readonly=True, copy=False, help="Unique Sequence No for each membership")
+    membership_id = fields.Many2one('res.partner', string="Member Name", ondelete="cascade", domain=[('partner_role', '=', 'member'), ('status', '=', 'joined')])
+    membership_type = fields.Many2one('gym.membership.type', string="Membership", ondelete="cascade")
+    membership_time = fields.Integer(string="Membership Time/Mounth")
+    fees_total = fields.Float(string="Fees Total", compute="_compute_fees_total")
+    start_date = fields.Date(string="Start Date")
+    end_date = fields.Date(string="End Date")
+    state = fields.Selection([
+        ('draft', 'Draft'),
+        ('in progress', 'In Progress'),
+        ('done', 'Done'),
+    ], string="State", default="draft", copy=False)
+    invoice_number = fields.Char(string="Invoice", readonly=True, copy=False)
+
+    @api.depends('fees_total')
+    def _compute_fees_total(self):
+        for record in self:
+            if record.membership_type:
+                record.fees_total = record.membership_type.fees * record.membership_time
+
+    @api.model
+    def create(self, vals):
+        """Automatically generate a Membership Number."""
+        if vals.get('name', _('New')) == _('New'):
+            vals['name'] = self.env['ir.sequence'].next_by_code('gym.membership.detail')
+        return super(GymMembershipDetail, self).create(vals)

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="gym_membership_detail_view_search" model="ir.ui.view">
+        <field name="name">gym.membership.detail.view.search</field>
+        <field name="model">gym.membership.detail</field>
+        <field name="arch" type="xml">
+            <search string="Search">
+                <filter name="draft" string="Draft" domain="[('state', '=', 'draft')]"/>
+                <filter name="in-progress" string="In Progress" domain="[('state', '=', 'in progress')]"/>
+                <filter name="done" string="Done" domain="[('state', '=', 'done')]"/>
+            </search>
+        </field>
+    </record>
+    <record id="gym_membership_detail_view_list" model="ir.ui.view">
+        <field name="name">gym.membership.detail.view.list</field>
+        <field name="model">gym.membership.detail</field>
+        <field name="arch" type="xml">
+            <list string="Membership Detail">
+                <field name="name" />
+                <field name="membership_id" />
+                <field name="membership_type" />
+                <field name="membership_time" />
+                <field name="start_date" />
+                <field name="end_date" />
+                <field name="state" 
+                widget="badge"
+                decoration-warning="state == 'in progress'"
+                decoration-success="state == 'done'"
+                />
+            </list>
+        </field>
+    </record>
+    <record id="gym_membership_detail_view_form" model="ir.ui.view">
+        <field name="name">gym.membership.detail.view.form</field>
+        <field name="model">gym.membership.detail</field>
+        <field name="arch" type="xml">
+            <form string="Membership Detail">
+                <header>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <widget name="web_ribbon" title="paid" bg_color="text-bg-success" invisible="state != 'done'"/>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" readonly="state == 'done'"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group string="Membership Detail">
+                            <field name="membership_id" readonly="state == 'done'"/>
+                            <field name="membership_type" readonly="state == 'done'"/>
+                            <field name="membership_time" readonly="state == 'done'"/>
+                            <field name="fees_total" />
+                        </group>
+                        <group string="Membership Time">
+                            <field name="start_date" readonly="state == 'done'"/>
+                            <field name="end_date" readonly="state == 'done'"/>
+                            <field name="invoice_number" />
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="gym_membership_detail_action" model="ir.actions.act_window">
+        <field name="name">Membership Detail</field>
+        <field name="res_model">gym.membership.detail</field>
+        <field name="view_mode">list,form</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                All your membership details will be recorded here
+            </p>
+        </field>
+    </record>
+</odoo>

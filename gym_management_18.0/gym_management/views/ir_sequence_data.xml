@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="ir_sequence_gym_member_id" model="ir.sequence">
+            <field name="name">Gym Member ID</field>
+            <field name="code">res.partner.member</field>
+            <field name="prefix">Member/%(year)s/</field>
+            <field name="padding">5</field>
+            <field name="number_next">1</field>
+            <field name="number_increment">1</field>
+            <field name="company_id" eval="False"/>
+        </record>
+        <record id="ir_sequence_gym_trainer_id" model="ir.sequence">
+            <field name="name">Gym Trainer ID</field>
+            <field name="code">res.partner.trainer</field>
+            <field name="prefix">Trainer/%(year)s/</field>
+            <field name="padding">5</field>
+            <field name="number_next">1</field>
+            <field name="number_increment">1</field>
+            <field name="company_id" eval="False"/>
+        </record>
+        <record id="ir_sequence_gym_membership_number" model="ir.sequence">
+            <field name="name">Gym Membership Number</field>
+            <field name="code">gym.membership.detail</field>
+            <field name="prefix">GYM/%(year)s/</field>
+            <field name="padding">5</field>
+            <field name="number_next">1</field>
+            <field name="number_increment">1</field>
+            <field name="company_id" eval="False"/>
+        </record>
+    </data>
+</odoo>

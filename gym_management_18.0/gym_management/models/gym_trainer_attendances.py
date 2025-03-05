@@ -5,8 +5,9 @@ from datetime import datetime
 class GymTrainerAttendances(models.Model):
     _name = 'gym.trainer.attendances'
     _description = 'Gym trainer attendances'
+    _order = 'id desc'
 
-    name = fields.Many2one('res.partner', string="Trainer", domain=[('partner_role', '=', 'trainer')], required=True)
+    name = fields.Many2one('res.partner', string="Trainer", domain=[('partner_role', '=', 'trainer'), ('status', '=', 'joined')], required=True)
     working_hours = fields.Float(string="Working Hours/Day")
     check_in = fields.Datetime(string="Check In", default=fields.Datetime.now(), required=True)
     check_out = fields.Datetime(string="Check Out", required=True)

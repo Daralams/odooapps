@@ -3,8 +3,9 @@ from odoo import models, fields, api
 class GymMemberAttendances(models.Model):
     _name = 'gym.member.attendances'
     _description = 'Gym Member Attendances'
+    _order = 'id desc'
 
-    name = fields.Many2one('res.partner', string="Name", domain=[('partner_role', '=', 'member')])
+    name = fields.Many2one('res.partner', string="Name", domain=[('partner_role', '=', 'member'), ('status', '=', 'joined')])
     check_in = fields.Datetime(string="Check in", default=fields.Datetime.now(), required=True)
     check_out = fields.Datetime(string="Check out", required=True)
     time_spent = fields.Char(string="Time Spent", compute="_compute_total_time", default=0)

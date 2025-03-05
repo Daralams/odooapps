@@ -9,6 +9,20 @@
         <filter name="male" string="Male" domain="[('gender', '=', 'male')]"/>
         <filter name="female" string="Female" domain="[('gender', '=', 'female')]"/>
         <separator/>
+        <filter name="waiting" string="Waiting" domain="[('status', '=', 'waiting')]"/>
+        <filter name="joined" string="Joined" domain="[('status', '=', 'joined')]"/>
+        <filter name="left" string="Left" domain="[('status', '=', 'left')]"/>
+        <filter name="expired" string="Expired" domain="[('status', '=', 'expired')]"/>
+      </xpath>
+    </field>
+  </record>
+  <record id="res_partner_view_kanban_inherit" model="ir.ui.view">
+    <field name="name">res.partner.view.kanban.inherit</field>
+    <field name="model">res.partner</field>
+    <field name="inherit_id" ref="base.res_partner_kanban_view"/>
+    <field name="arch" type="xml">
+      <xpath expr="//div/field[@name='display_name']" position="before">
+        <field class="float-end" name="status" widget="label_selection"/>
       </xpath>
     </field>
   </record>
@@ -17,12 +31,47 @@
     <field name="model">res.partner</field>
     <field name="inherit_id" ref="base.view_partner_form"/>
     <field name="arch" type="xml">
-      <xpath expr="//field[@name='function']" position="before">
-        <field name="gender" widget="radio"/>
+      <xpath expr="//sheet" position="before">
+        <header>
+          <button name="action_create_invoice" string="Create Membership Invoice" type="object" class="btn btn-primary" invisible="partner_role == 'trainer' or status == 'waiting' or status == 'left'"/>
+          <button name="action_joined" string="Joined" type="object" class="btn btn-primary" invisible="status == 'joined' or status == 'left'"/>
+          <button name="action_left" string="Left" type="object" class="btn btn-primary" invisible="status == 'waiting' or status == 'left'"/>
+          <button name="action_to_waiting" string="Set to Waiting" type="object" class="oe_highlight" invisible="status == 'waiting'" />
+          <field name="status" widget="statusbar" statusbar_visible="waiting,joined,left"/>
+        </header>
+      </xpath>
+      <xpath expr="//span[@name='address_name']" position="before">
+        <field name="gender" widget="radio" />
         <field name="age" />
         <field name="partner_role" widget="radio"/>
-        <field name="support_trainer" widget="many2one_avatar_user" invisible="partner_role == 'trainer'"/>
-        <field name="trainer_skills" widget="many2many_tags" options="{'color_field': 'color'}" invisible="partner_role == 'member'"/>
+        <field name="member_id" invisible="partner_role == 'trainer' or status == 'waiting'"/>
+        <field name="trainer_id" invisible="partner_role == 'member' or status == 'waiting'"/>
+        <field name="support_trainer" widget="many2one_avatar_user" invisible="partner_role == 'trainer' or status == 'waiting'"/>
+        <field name="trainer_skills" widget="many2many_tags" options="{'color_field': 'color'}" invisible="partner_role == 'member' or status == 'waiting'"/>
+        <field name="join_date" invisible="status == 'waiting'" readonly="status == 'left'"/>
+        <field name="left_date" invisible="status == 'waiting' or status == 'joined'"/>
+      </xpath>
+      <xpath expr="//notebook/page[@name='contact_addresses']" position="attributes">
+        <attribute name="autofocus" remove="autofocus"/>
+      </xpath>
+      <xpath expr="//notebook/page[@name='contact_addresses']" position="before">
+        <page string="Membership Details" name="membership_details" invisible="partner_role == 'trainer'" autofocus="autofocus">
+          <group>
+            <field name="member_detail_ids" mode="list,kanban" nolabel="1" colspan="2">
+              <list string="Membership" editable="bottom">
+                <field name="membership_type" />
+                <field name="membership_time" />
+                <field name="fees_total" />
+                <field name="start_date" />
+                <field name="end_date" />
+                <field name="state" 
+                widget="badge"
+                decoration-warning="state == 'in progress'"
+                decoration-success="state == 'done'"/>
+              </list>
+            </field>
+          </group>
+        </page>
       </xpath>
     </field>
   </record>
