@@ -1,9 +1,19 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_gym_trainer_attendances_id,access.gym.trainer.attendances,model_gym_trainer_attendances,base.group_user,1,1,1,1
 access_gym_member_attendances_id,access.gym.member.attendances,model_gym_member_attendances,base.group_user,1,1,1,1
+access_gym_member_activity_id,access.gym.member.activity,model_gym_member_activity,base.group_user,1,1,1,1
 
 access_gym_partner_id,access.gym.partner,model_res_partner,base.group_user,1,1,1,1
 access_gym_trainer_skills_id,access.gym.trainer.skills,model_gym_trainer_skills,base.group_user,1,1,1,1
 
 access_gym_membership_type_id,access.gym.membership.type,model_gym_membership_type,base.group_user,1,1,1,1
 access_gym_membership_detail_id,access.gym.membership.detail,model_gym_membership_detail,base.group_user,1,1,1,1
+
+access_gym_workouts_id,access.gym.workouts,model_gym_workouts,base.group_user,1,1,1,1
+access_gym_workouts_line_id,access.gym.workouts.line,model_gym_workouts_line,base.group_user,1,1,1,1
+access_gym_workouts_exercise_id,access.gym.workouts.exercise,model_gym_workouts_exercise,base.group_user,1,1,1,1
+access_gym_workouts_plan_id,access.gym.workouts.plan,model_gym_workouts_plan,base.group_user,1,1,1,1
+access_gym_workout_days_id,access.gym.workout_days,model_gym_workout_days,base.group_user,1,1,1,1
+
+access_gym_diet_plan_id,access.gym.diet.plan,model_gym_diet_plan,base.group_user,1,1,1,1
+access_gym_diet_plan_line_id,access.gym.diet.plan.line,model_gym_diet_plan_line,base.group_user,1,1,1,1

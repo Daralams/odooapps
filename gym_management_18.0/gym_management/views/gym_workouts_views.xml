@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="gym_workouts_view_tree" model="ir.ui.view">
+        <field name="name">gym.workouts.view.tree</field>
+        <field name="model">gym.workouts</field>
+        <field name="arch" type="xml">
+            <list string="Gym Workouts">
+                <field name="name" />
+                <field name="support_trainer" />
+                <field name="workout_days" widget="many2many_tags"/>
+            </list>
+        </field>
+    </record>
+    <record id="gym_workouts_view_kanban" model="ir.ui.view">
+        <field name="name">gym.workouts.view.kanban</field>
+        <field name="model">gym.workouts</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <field name="name" />
+                <field name="image" />
+                <templates>
+                    <t t-name="card" class="flex-row">
+                        <main class="pe-2">
+                            <div class="mb-1">
+                                <div class="d-flex mb-0 h5">
+                                    <field name="name"/>
+                                </div>
+                            </div>
+                        </main>
+                        <aside>
+                            <field name="image" widget="image" alt="Product" options="{'img_class': 'w-100 object-fit-contain'}" invisible="not image"/>
+                        </aside>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+    <record id="gym_workouts_view_view_form" model="ir.ui.view">
+        <field name="name">gym.workouts.view.view.form</field>
+        <field name="model">gym.workouts</field>
+        <field name="arch" type="xml">
+            <form string="Gym Workouts">
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" placeholder="e.g. Bench press"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <field name="image" widget="image" class="oe_avatar" nolabel="1"/>
+                        <field name="support_trainer"/>
+                        <field name="workout_days" widget="many2many_tags" options="{'color_field': 'color'}"/>
+                    </group>
+                    <notebook>
+                        <page name="workouts-line" string="Workouts Line">
+                            <group>
+                                <field name="workout_ids" nolabel="1" colspan="2">
+                                    <list string="Workouts Line" editable="bottom">
+                                        <field name="name" />
+                                        <field name="exercise_for" widget="many2many_tags" options="{'color_field': 'color'}"/>
+                                        <field name="calories_burn" />
+                                        <field name="equipments" />
+                                        <field name="sets" />
+                                        <field name="repeat" />
+                                        <field name="weight" />
+                                    </list>
+                                </field>
+                            </group>
+                        </page>
+                        <page name="description" string="Description">
+                            <field name="description" />
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="gym_workouts_action" model="ir.actions.act_window">
+        <field name="name">Gym Workouts</field>
+        <field name="res_model">gym.workouts</field>
+        <field name="view_mode">kanban,list,form</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">Create a Gym Workouts</p>
+        </field>
+    </record>
+</odoo>

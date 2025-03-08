@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="gym_workouts_line_view_tree" model="ir.ui.view">
+        <field name="name">gym.workouts.line.view.tree</field>
+        <field name="model">gym.workouts.line</field>
+        <field name="arch" type="xml">
+            <list string="Exercises">
+                <field name="name" />
+                <field name="calories_burn" />
+                <field name="equipments" />
+                <field name="sets" />
+                <field name="repeat" />
+                <field name="weight" />
+            </list>
+        </field>
+    </record>
+    <record id="gym_workouts_line_view_form" model="ir.ui.view">
+        <field name="name">gym.workouts.line.view.form</field>
+        <field name="model">gym.workouts.line</field>
+        <field name="arch" type="xml">
+            <form string="Exercise">
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" placeholder="e.g. Bench press"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="workout_id" />
+                            <field name="calories_burn" />
+                            <field name="average_time" />
+                        </group>
+                        <group>
+                            <field name="sets" />
+                            <field name="weight" />
+                        </group>
+                    </group>
+                    <notebook>
+                        <page name="steps" string="Steps">
+                            <field name="steps" />
+                        </page>
+                        <page name="benefits" string="Benefits">
+                            <field name="benefits" />
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="gym_workouts_line_action" model="ir.actions.act_window">
+        <field name="name">Exercises</field>
+        <field name="res_model">gym.workouts.line</field>
+        <field name="view_mode">list,form</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">Create a Gym Exercise</p>
+        </field>
+    </record>
+</odoo>

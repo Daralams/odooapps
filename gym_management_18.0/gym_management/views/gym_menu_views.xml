@@ -9,6 +9,7 @@
         id="gym_management_members_nav_menu"
         name="Members"
         parent="gym_management_root_menu"
+        sequence="5"
     />
     <menuitem
         id="gym_management_member_sub_menu"
@@ -27,6 +28,7 @@
         id="gym_management_membership_nav_menu"
         name="Membership"
         parent="gym_management_root_menu"
+        sequence="6"
     />
     <menuitem
         id="gym_management_membership_type_sub_menu"
@@ -45,6 +47,7 @@
         id="gym_management_attendances_nav_menu"
         name="Attendances"
         parent="gym_management_root_menu"
+        sequence="7"
     />
     <menuitem
         id="gym_management_trainer_attendances_sub_menu"
@@ -58,16 +61,98 @@
         action="gym_member_attendances_action"
         parent="gym_management_attendances_nav_menu"
     />
+    <!-- gym workouts and exercise -->
+    <menuitem
+        id="gym_management_workouts_nav_menu"
+        name="Workouts"
+        parent="gym_management_root_menu"
+        sequence="8"
+    />
+    <menuitem
+        id="gym_management_workouts_sub_menu"
+        name="Gym Workouts"
+        action="gym_workouts_action"
+        parent="gym_management_workouts_nav_menu"
+    />
+    <menuitem
+        id="gym_management_workouts_exercises_sub_menu"
+        name="Exercises"
+        action="gym_workouts_line_action"
+        parent="gym_management_workouts_nav_menu"
+    />
+    <menuitem
+        id="gym_management_member_activity_sub_menu"
+        name="Gym Activity"
+        action="gym_member_activity_action"
+        parent="gym_management_workouts_nav_menu"
+    />
+    <menuitem
+        id="gym_management_workouts_plan_sub_menu"
+        name="Workout Plan"
+        action="gym_workouts_plan_action"
+        parent="gym_management_workouts_nav_menu"
+    />
+    <!-- diet plan -->
+    <menuitem
+        id="gym_management_diet_plan_nav_menu"
+        name="Diet Plan"
+        parent="gym_management_root_menu"
+        sequence="9"
+    />
+    <menuitem
+        id="gym_management_diet_plan_sub_menu"
+        name="Diet Plan"
+        action="gym_diet_plan_action"
+        parent="gym_management_diet_plan_nav_menu"
+    />
+    <!-- gym equipments -->
+    <menuitem
+        id="gym_management_equipment_nav_menu"
+        name="Equipment"
+        parent="gym_management_root_menu"
+        sequence="10"
+    />
+    <menuitem
+        id="gym_management_equipments_sub_menu"
+        name="Equipments"
+        action="gym_equipment_action"
+        parent="gym_management_equipment_nav_menu"
+    />
     <!-- configuration -->
     <menuitem
         id="gym_management_configuration_nav_menu"
         name="Configuration"
         parent="gym_management_root_menu"
+        sequence="11"
+    />
+    <menuitem
+        id="gym_management_trainer_details_sub_menu"
+        name="Trainer Details"
+        parent="gym_management_configuration_nav_menu"
+        sequence="12"
     />
     <menuitem
         id="gym_management_trainer_skills_sub_menu"
         name="Trainer Skills"
         action="gym_trainer_skills_action"
+        parent="gym_management_trainer_details_sub_menu"
+    />
+    <menuitem
+        id="gym_management_workout_details_sub_menu"
+        name="Workout Details"
         parent="gym_management_configuration_nav_menu"
+        sequence="13"
+    />
+    <menuitem
+        id="gym_management_workout_days_sub_menu"
+        name="Workout Days"
+        action="gym_workout_days_action"
+        parent="gym_management_workout_details_sub_menu"
+    />
+    <menuitem
+        id="gym_management_workouts_exercise_sub_menu"
+        name="Gym Exercise"
+        action="gym_workouts_exercise_action"
+        parent="gym_management_workout_details_sub_menu"
     />
 </odoo>

@@ -9,6 +9,7 @@ class GymMemberAttendances(models.Model):
     check_in = fields.Datetime(string="Check in", default=fields.Datetime.now(), required=True)
     check_out = fields.Datetime(string="Check out", required=True)
     time_spent = fields.Char(string="Time Spent", compute="_compute_total_time", default=0)
+    member_activity_line = fields.One2many(comodel_name="gym.member.activity", inverse_name="attendance_id", string="Activity")
     feedback = fields.Text(string="Feedback")
 
     @api.depends('time_spent')

@@ -33,6 +33,21 @@
                         </group>
                     </group>
                     <notebook>
+                        <page name="activity" string="Activity">
+                            <group>
+                                <field name="member_activity_line" mode="list,kanban" nolabel="1" colspan="2">
+                                    <list string="Activity" editable="bottom">
+                                        <field name="name" />
+                                        <field name="exercise" />
+                                        <field name="equipment" />
+                                        <field name="sets" />
+                                        <field name="repeat" />
+                                        <field name="weight" />
+                                        <field name="date" />
+                                    </list>
+                                </field>
+                            </group>
+                        </page>
                         <page name="details" string="Details">
                             <group>
                                 <field name="feedback" placeholder="your impressions and messages..."/>

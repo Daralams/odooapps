@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="gym_workouts_exercise_view_tree" model="ir.ui.view">
+        <field name="name">gym.workouts.exercise.view.tree</field>
+        <field name="model">gym.workouts.exercise</field>
+        <field name="arch" type="xml">
+            <list string="Gym Exercise" editable="bottom">
+                <field name="name" />
+            </list>
+        </field>
+    </record>
+    <record id="gym_workouts_exercise_action" model="ir.actions.act_window">
+        <field name="name">Gym Exercise</field>
+        <field name="res_model">gym.workouts.exercise</field>
+        <field name="view_mode">list,form</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">Create a Gym Exercise</p>
+            </field>
+        </field>
+    </record>
+</odoo>
