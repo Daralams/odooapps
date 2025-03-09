@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="gym_membership_analysis_view_graph" model="ir.ui.view">
+        <field name="name">gym_membership_analysis.view.graph</field>
+        <field name="model">gym.membership.detail</field>
+        <field name="arch" type="xml">
+            <graph string="Membership Analysis" type="bar">
+                <field name="membership_type" />
+                <field name="fees_total" />
+                <field name="state" />
+            </graph>
+        </field>
+    </record>
+    <record id="gym_membership_analysis_view_pivot" model="ir.ui.view">
+        <field name="name">gym.membership.analysis.view.pivot</field>
+        <field name="model">gym.membership.detail</field>
+        <field name="arch" type="xml">
+            <pivot string="Membership Analysis" sample="1">
+                <field name="membership_type"/>
+                <field name="fees_total"/>
+                <field name="state"/>
+            </pivot>
+        </field>
+    </record>
+    <record id="gym_membership_analysis_action" model="ir.actions.act_window">
+        <field name="name">Membership Analysis</field>
+        <field name="res_model">gym.membership.detail</field>
+        <field name="view_mode">graph,pivot</field>
+        <field name="domain">[('state', '=', 'done')]</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                There is no membership analysis at this time
+            </p>
+        </field>
+    </record>
+</odoo>

@@ -3,6 +3,7 @@ from odoo import models, fields, api
 class GymMemberActivity(models.Model):
     _name = 'gym.member.activity'
     _description = 'Gym Member Activity'
+    _order = 'id desc'
 
     attendance_id = fields.Many2one('gym.member.attendances', ondelete="cascade")
     name = fields.Many2one('res.partner', string="Member", domain=[('partner_role', '=', 'member'), ('status', '=', 'joined')], ondelete="cascade")

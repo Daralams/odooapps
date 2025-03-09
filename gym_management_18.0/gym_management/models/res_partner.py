@@ -29,6 +29,7 @@ class Partner(models.Model):
     ], default="waiting", copy=False)
     member_detail_ids = fields.One2many(comodel_name="gym.membership.detail", inverse_name="membership_id")    
     workouts_plan_ids = fields.One2many(comodel_name="gym.workouts.plan", inverse_name="partner_id", string="Workout Plan")
+    diet_plan_ids = fields.One2many(comodel_name="gym.diet.plan", inverse_name="partner_id", string="Diet Plan")
 
     def action_joined(self):
         self.status = 'joined'

@@ -52,7 +52,7 @@
         <field name="left_date" invisible="status == 'waiting' or status == 'joined'"/>
       </xpath>
       <xpath expr="//notebook/page[@name='internal_notes']" position="after">
-        <page string="Membership Details" name="membership_details" invisible="partner_role == 'trainer'">
+        <page string="Membership Details" name="membership_details" invisible="partner_role == 'trainer' or status != 'joined'">
           <group>
             <field name="member_detail_ids" mode="list,kanban" nolabel="1" colspan="2">
               <list string="Membership" editable="bottom">
@@ -71,13 +71,26 @@
         </page>
       </xpath>
       <xpath expr="//notebook/page[@name='membership_details']" position="after">
-        <page name="workout_plan" string="Workout Plan" invisible="partner_role == 'trainer'">
+        <page name="workout_plan" string="Workout Plan" invisible="partner_role == 'trainer' or status != 'joined'">
           <group>
             <field name="workouts_plan_ids" mode="list,kanban" nolabel="1" colspan="2">
               <list string="Workout Plan" editable="bottom">
                 <field name="workout_id" />
                 <field name="start_date" />
                 <field name="end_date" />
+              </list>
+            </field>
+          </group>
+        </page>
+      </xpath>
+      <xpath expr="//notebook/page[@name='workout_plan']" position="after">
+        <page name="diet_plan" string="Diet Plan" invisible="partner_role == 'trainer' or status != 'joined'">
+          <group>
+            <field name="diet_plan_ids" mode="list,kanban" nolabel="1" colspan="2">
+              <list string="Diet Plan">
+                <field name="name" />
+                <field name="date" />
+                <field name="diet_ids" />
               </list>
             </field>
           </group>

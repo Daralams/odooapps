@@ -105,18 +105,30 @@
         action="gym_diet_plan_action"
         parent="gym_management_diet_plan_nav_menu"
     />
-    <!-- gym equipments -->
+    <!-- reporting anaysis -->
     <menuitem
-        id="gym_management_equipment_nav_menu"
-        name="Equipment"
+        id="gym_management_reporting_nav_menu"
+        name="Reporting"
         parent="gym_management_root_menu"
         sequence="10"
     />
     <menuitem
-        id="gym_management_equipments_sub_menu"
-        name="Equipments"
-        action="gym_equipment_action"
-        parent="gym_management_equipment_nav_menu"
+        id="gym_management_membership_analysis_sub_menu"
+        name="Membership Analysis"
+        action="gym_membership_analysis_action"
+        parent="gym_management_reporting_nav_menu"
+    />
+    <menuitem
+        id="gym_management_member_analysis_sub_menu"
+        name="Gym Member Analysis"
+        action="gym_member_analysis_action"
+        parent="gym_management_reporting_nav_menu"
+    />
+    <menuitem
+        id="gym_management_trainer_analysis_sub_menu"
+        name="Gym Trainer Analysis"
+        action="gym_trainer_analysis_action"
+        parent="gym_management_reporting_nav_menu"
     />
     <!-- configuration -->
     <menuitem
@@ -126,10 +138,17 @@
         sequence="11"
     />
     <menuitem
+        id="gym_management_equipments_sub_menu"
+        name="Equipments"
+        action="gym_equipment_action"
+        parent="gym_management_configuration_nav_menu"
+        sequence="12"
+    />
+    <menuitem
         id="gym_management_trainer_details_sub_menu"
         name="Trainer Details"
         parent="gym_management_configuration_nav_menu"
-        sequence="12"
+        sequence="13"
     />
     <menuitem
         id="gym_management_trainer_skills_sub_menu"
@@ -141,7 +160,7 @@
         id="gym_management_workout_details_sub_menu"
         name="Workout Details"
         parent="gym_management_configuration_nav_menu"
-        sequence="13"
+        sequence="14"
     />
     <menuitem
         id="gym_management_workout_days_sub_menu"
