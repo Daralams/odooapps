@@ -110,6 +110,7 @@
         id="gym_management_reporting_nav_menu"
         name="Reporting"
         parent="gym_management_root_menu"
+        groups="gym_management.group_administor"
         sequence="10"
     />
     <menuitem
@@ -148,6 +149,7 @@
         id="gym_management_trainer_details_sub_menu"
         name="Trainer Details"
         parent="gym_management_configuration_nav_menu"
+        groups="gym_management.group_administor"
         sequence="13"
     />
     <menuitem
@@ -160,6 +162,7 @@
         id="gym_management_workout_details_sub_menu"
         name="Workout Details"
         parent="gym_management_configuration_nav_menu"
+        groups="gym_management.group_administor"
         sequence="14"
     />
     <menuitem

@@ -21,7 +21,7 @@
                     <field name="gym_equipment_ok"/>
                 </label> -->
                 <!-- perbaiki bagian ini, tampilannya masih belum sesuai!! -->
-                <field name="gym_equipment_ok"/> 
+                <field name="gym_equipment_ok" groups="gym_management.group_administor"/> 
             </xpath>
         </field>
     </record>
