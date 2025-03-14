@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_gym_trainercard">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <div style="border: 1px solid #000; padding: 10px; width: 250px; font-family: Arial, sans-serif;">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                                <div style="display: flex; align-items: center;">
+                                    <img src="/gym_management/static/description/icon.png" width="20"/>
+                                    <span style="margin-left: 5px; font-size: 12px;">Gym Management</span>
+                                </div>
+                                <div t-field="doc.status" style="padding: 15px 10px; border-radius: 5px; font-size: 12px; text-align: center; color: white;" t-att-style="'background-color: ' + ('red' if doc.status == 'left' else 'green' if doc.status == 'joined' else 'blue')"></div>
+                            </div>
+                            <div style="text-align: center; margin-bottom: 10px;">
+                                <t t-if="doc.image_1920">
+                                    <img t-att-src="'data:image/png;base64,%s' % doc.image_1920.decode()" width="80" height="80" style="border-radius: 50%;"/>
+                                </t>
+                                <div style="font-weight: bold; font-size: 14px; margin-top: 5px;">
+                                    <strong t-field="doc.name"/>
+                                </div>
+                            </div>
+                            <div style="display: flex; flex-direction: column; gap: 5px;">
+                                <div>
+                                    <strong>Trainer ID:</strong>
+                                    <span t-field="doc.trainer_id"/>
+                                </div>
+                                <div>
+                                    <strong>Gender:</strong>
+                                    <span t-field="doc.gender"/>
+                                </div>
+                                <div>
+                                    <strong>Age:</strong>
+                                    <span t-field="doc.age"/>
+                                </div>
+                                <div>
+                                    <strong>Phone:</strong>
+                                    <span t-field="doc.mobile"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>
