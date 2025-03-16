@@ -131,6 +131,12 @@
         action="gym_trainer_analysis_action"
         parent="gym_management_reporting_nav_menu"
     />
+    <menuitem
+        id="gym_management_member_activity_report_sub_menu"
+        name="Gym Member Activity Report"
+        action="gym_activity_report_action"
+        parent="gym_management_reporting_nav_menu"
+    />
     <!-- configuration -->
     <menuitem
         id="gym_management_configuration_nav_menu"

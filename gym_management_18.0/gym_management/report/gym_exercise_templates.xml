@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_gym_exercise">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="workout">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <h2 style="text-align: center; font-weight: bold; margin-bottom: 20px;" t-field="workout.name"></h2>
+                        <table class="table table-bordered" style="width: 100%; border-collapse: collapse;">
+                            <thead>
+                                <tr style="background-color: #f2f2f2;">
+                                    <th style="padding: 8px; border: 1px solid #ddd;">Calories Burn</th>
+                                    <th style="padding: 8px; border: 1px solid #ddd;">Sets</th>
+                                    <th style="padding: 8px; border: 1px solid #ddd;">Repeat</th>
+                                    <th style="padding: 8px; border: 1px solid #ddd;">Weight (kg)</th>
+                                    <th style="padding: 8px; border: 1px solid #ddd;">Avg. Time (Min)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style="padding: 8px; border: 1px solid #ddd;">
+                                        <span t-field="workout.calories_burn"/>
+                                    </td>
+                                    <td style="padding: 8px; border: 1px solid #ddd;">
+                                        <span t-field="workout.sets"/>
+                                    </td>
+                                    <td style="padding: 8px; border: 1px solid #ddd;">
+                                        <span t-field="workout.repeat"/>
+                                    </td>
+                                    <td style="padding: 8px; border: 1px solid #ddd;">
+                                        <span t-field="workout.weight"/>
+                                    </td>
+                                    <td style="padding: 8px; border: 1px solid #ddd;">
+                                        <span t-field="workout.average_time"/>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <!-- Langkah-langkah -->
+                        <h3 style="margin-top: 20px;">Steps</h3>
+                        <p t-field="workout.steps" style="border: 1px solid #ddd; padding: 10px; background-color: #f9f9f9;"/>
+                        <!-- Manfaat -->
+                        <h3 style="margin-top: 20px;">Benefits</h3>
+                        <p t-field="workout.benefits" style="border: 1px solid #ddd; padding: 10px; background-color: #f9f9f9;"/>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

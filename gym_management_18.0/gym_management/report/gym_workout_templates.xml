@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_gym_workouts">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.external_layout">
+                    <div class="page" style="text-align: center;">
+                        <h2 style="font-weight: bold; text-align: center;" t-field="o.name"></h2>
+                        <p style="text-align: left;">
+                            <strong>Support Trainer:</strong>
+                            <span t-field="o.support_trainer.name"/>
+                        </p>
+                        <p style="text-align: left;">
+                            <strong>Workout Days:</strong>
+                            <t t-foreach="o.workout_days" t-as="day">
+                                <span t-field="day.name"/>
+                            </t>
+                        </p>
+                        <h3 style="text-align: left;">Workout Details</h3>
+                        <table class="table table-bordered" style="width: 100%; border-collapse: collapse;">
+                            <thead>
+                                <tr style="background-color: #f2f2f2;">
+                                    <th style="padding: 8px; border: 1px solid #ddd;">Exercise Name</th>
+                                    <th style="padding: 8px; border: 1px solid #ddd;">Calories Burn</th>
+                                    <th style="padding: 8px; border: 1px solid #ddd;">Exercise For</th>
+                                    <th style="padding: 8px; border: 1px solid #ddd;">Equipments</th>
+                                    <th style="padding: 8px; border: 1px solid #ddd;">Sets</th>
+                                    <th style="padding: 8px; border: 1px solid #ddd;">Repeat</th>
+                                    <th style="padding: 8px; border: 1px solid #ddd;">Weight (kg)</th>
+                                    <th style="padding: 8px; border: 1px solid #ddd;">Avg. Time (Min)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="o.workout_ids" t-as="workout">
+                                    <tr>
+                                        <td style="padding: 8px; border: 1px solid #ddd;">
+                                            <span t-field="workout.name"/>
+                                        </td>
+                                        <td style="padding: 8px; border: 1px solid #ddd;">
+                                            <span t-field="workout.calories_burn"/>
+                                        </td>
+                                        <td style="padding: 8px; border: 1px solid #ddd;">
+                                            <t t-foreach="workout.exercise_for" t-as="exercise">
+                                                <span t-field="exercise.name"/>
+                                            </t>
+                                        </td>
+                                        <td style="padding: 8px; border: 1px solid #ddd;">
+                                            <span t-field="workout.equipments.name"/>
+                                        </td>
+                                        <td style="padding: 8px; border: 1px solid #ddd;">
+                                            <span t-field="workout.sets"/>
+                                        </td>
+                                        <td style="padding: 8px; border: 1px solid #ddd;">
+                                            <span t-field="workout.repeat"/>
+                                        </td>
+                                        <td style="padding: 8px; border: 1px solid #ddd;">
+                                            <span t-field="workout.weight"/>
+                                        </td>
+                                        <td style="padding: 8px; border: 1px solid #ddd;">
+                                            <span t-field="workout.average_time"/>
+                                        </td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                        <h3 style="text-align: left;">Description</h3>
+                        <p t-field="o.description" style="text-align: left;"/>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

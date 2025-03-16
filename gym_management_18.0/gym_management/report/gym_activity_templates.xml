@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_gym_member_activity">
+        <t t-call="web.html_container">
+            <t t-foreach="activities" t-as="activity">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <h2>Gym Activity Report</h2>
+                        <!-- <p>Report Period:
+                            <t t-esc="data.get('start_date')"/> -
+                            <t t-esc="data.get('end_date')"/>
+                        </p> -->
+                        <table class="table table-condensed">
+                            <thead>
+                                <tr>
+                                    <th>Member</th>
+                                    <th>Exercise</th>
+                                    <th>Equipment</th>
+                                    <th>Sets</th>
+                                    <th>Repeat</th>
+                                    <th>Weight (kg)</th>
+                                    <th>Date</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="env['gym.member.activity'].browse(data.get('activities'))" t-as="activity">
+                                    <tr>
+                                        <td>-
+                                            <span t-esc="activity.name"/>
+                                        </td>
+                                        <td>-
+                                            <span t-esc="activity.exercise.name"/>
+                                        </td>
+                                        <td>-
+                                            <span t-esc="activity.equipment.name"/>
+                                        </td>
+                                        <td>
+                                            <span t-esc="activity.sets"/>
+                                        </td>
+                                        <td>
+                                            <span t-esc="activity.repeat"/>
+                                        </td>
+                                        <td>
+                                            <span t-esc="activity.weight"/>
+                                        </td>
+                                        <td>
+                                            <span t-esc="activity.date"/>
+                                        </td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

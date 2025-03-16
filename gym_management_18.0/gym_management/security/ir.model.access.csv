@@ -17,3 +17,5 @@ access_gym_workout_days_id,access.gym.workout_days,model_gym_workout_days,base.g
 
 access_gym_diet_plan_id,access.gym.diet.plan,model_gym_diet_plan,base.group_user,1,1,1,1
 access_gym_diet_plan_line_id,access.gym.diet.plan.line,model_gym_diet_plan_line,base.group_user,1,1,1,1
+
+access_gym_activity_report_id,access.gym.activity.report,model_gym_activity_report,base.group_user,1,1,1,1
