@@ -22,7 +22,7 @@
         <field name="report_name">gym_management.report_gym_member_activity</field>
         <field name="report_file">gym_management.report_gym_member_activity</field>
         <field name="paperformat_id" ref="gym_management.paperformat_gym_member_activity_report" />
-        <field name="print_report_name">'Gym Member Activity Report'</field>
+        <field name="print_report_name">'Gym Activity Report - %s' % object.name</field>
         <field name="binding_model_id" ref="model_gym_member_activity"/>
         <field name="binding_type">report</field>
     </record>

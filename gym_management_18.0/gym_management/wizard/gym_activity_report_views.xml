@@ -19,11 +19,6 @@
                             class="btn-primary">
                             <i class="fa fa-download mr-2"/> Download PDF
                         </button>
-                        <!-- <button name="action_sale_order_excel" type="object"
-                            class="btn-primary">
-                            <i class="fa fa-download mr-2"/>
-                        Download XLS
-                        </button> -->
                         <button special="cancel" string="Cancel"
                             class="btn-secondary"/>
                     </footer>

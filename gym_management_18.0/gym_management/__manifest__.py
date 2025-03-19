@@ -50,8 +50,8 @@
         'report/gym_workout_reports.xml',
         'report/gym_exercise_templates.xml',
         'report/gym_exercise_reports.xml',
-        'report/gym_activity_reports.xml', # development
-        'report/gym_activity_templates.xml', # development
+        'report/gym_activity_reports.xml', 
+        'report/gym_activity_templates.xml',
         'wizard/gym_activity_report_views.xml',
         'views/gym_menu_views.xml',
         'views/templates.xml',
