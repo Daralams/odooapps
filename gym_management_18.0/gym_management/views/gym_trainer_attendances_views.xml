@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <record id="gym_trainer_attendances_view_list" model="ir.ui.view">
-        <field name="name">gym.trainer.attendances.view.list</field>
+    <record id="gym_trainer_attendances_view_tree" model="ir.ui.view">
+        <field name="name">gym.trainer.attendances.view.tree</field>
         <field name="model">gym.trainer.attendances</field>
         <field name="arch" type="xml">
-            <list string="Trainer Attendance" 
+            <tree string="Trainer Attendance" 
                 decoration-success="attendance_status == 'finished'" 
                 decoration-danger="attendance_status == 'unfinished'">
                 <field name="name" />
@@ -17,7 +17,7 @@
                 decoration-success="attendance_status == 'finished'"
                 decoration-danger="attendance_status == 'unfinished'"
                 />
-            </list>
+            </tree>
         </field>
     </record>
     <record id="gym_trainer_attendances_view_form" model="ir.ui.view">
@@ -53,7 +53,7 @@
     <record id="gym_trainer_attendances_action" model="ir.actions.act_window">
         <field name="name">Trainer Attendance</field>
         <field name="res_model">gym.trainer.attendances</field>
-        <field name="view_mode">list,form</field>
+        <field name="view_mode">tree,form</field>
         <field name="domain">[]</field>
         <field name="context">{}</field>
         <field name="help" type="html">

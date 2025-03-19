@@ -6,7 +6,7 @@ class GymWorkouts(models.Model):
 
     name = fields.Char(string="Name", required=True)
     image = fields.Binary(string="Image")
-    support_trainer = fields.Many2one('res.partner', string="Support Trainer", domain=[('partner_role', '=', 'member'), ('status', '=', 'joined')])
+    support_trainer = fields.Many2one('res.partner', string="Support Trainer", domain=[('partner_role', '=', 'trainer'), ('status', '=', 'joined')])
     workout_days = fields.Many2many('gym.workout.days', string="Workout Days")
     description = fields.Html(
         'Description', translate=True)

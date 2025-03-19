@@ -14,12 +14,12 @@
         <field name="name">gym.membership.type.view.tree</field>
         <field name="model">gym.membership.type</field>
         <field name="arch" type="xml">
-            <list string="Membership Type">
+            <tree string="Membership Type">
                 <field name="name" />
                 <field name="duration" />
                 <field name="fees" />
                 <field name="active" />
-            </list>
+            </tree>
         </field>
     </record>
     <record id="gym_membership_type_view_form" model="ir.ui.view">
@@ -54,7 +54,7 @@
     <record id="gym_membership_type_action" model="ir.actions.act_window">
         <field name="name">Membership Type</field>
         <field name="res_model">gym.membership.type</field>
-        <field name="view_mode">list,form</field>
+        <field name="view_mode">tree,form</field>
         <field name="domain">[]</field>
         <field name="context">{}</field>
         <field name="help" type="html">

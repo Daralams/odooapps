@@ -4,14 +4,14 @@
         <field name="name">gym.workouts.line.view.tree</field>
         <field name="model">gym.workouts.line</field>
         <field name="arch" type="xml">
-            <list string="Exercises">
+            <tree string="Exercises">
                 <field name="name" />
                 <field name="calories_burn" />
                 <field name="equipments" />
                 <field name="sets" />
                 <field name="repeat" />
                 <field name="weight" />
-            </list>
+            </tree>
         </field>
     </record>
     <record id="gym_workouts_line_view_form" model="ir.ui.view">
@@ -51,7 +51,7 @@
     <record id="gym_workouts_line_action" model="ir.actions.act_window">
         <field name="name">Exercises</field>
         <field name="res_model">gym.workouts.line</field>
-        <field name="view_mode">list,form</field>
+        <field name="view_mode">tree,form</field>
         <field name="domain">[]</field>
         <field name="context">{}</field>
         <field name="help" type="html">

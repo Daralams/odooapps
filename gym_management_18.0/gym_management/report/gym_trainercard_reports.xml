@@ -24,7 +24,7 @@
         <field name="paperformat_id" ref="gym_management.paperformat_gym_trainercard" />
         <field name="print_report_name">'Gym Trainercard - %s' % object.name</field>
         <field name="binding_model_id" ref="model_res_partner"/>
-        <field name="domain">[('partner_role', '=', 'trainer')]</field>
+        <!-- <field name="domain">[('partner_role', '=', 'trainer')]</field> -->
         <field name="binding_type">report</field>
     </record>
 </odoo>

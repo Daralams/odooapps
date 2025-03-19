@@ -21,7 +21,7 @@
     <field name="model">res.partner</field>
     <field name="inherit_id" ref="base.res_partner_kanban_view"/>
     <field name="arch" type="xml">
-      <xpath expr="//div/field[@name='display_name']" position="before">
+      <xpath expr="//strong/field[@name='display_name']" position="before">
         <field class="float-end" name="status" widget="label_selection"/>
       </xpath>
     </field>
@@ -54,8 +54,8 @@
       <xpath expr="//notebook/page[@name='internal_notes']" position="after">
         <page string="Membership Details" name="membership_details" invisible="partner_role == 'trainer' or status != 'joined'">
           <group>
-            <field name="member_detail_ids" mode="list,kanban" nolabel="1" colspan="2">
-              <list string="Membership" editable="bottom">
+            <field name="member_detail_ids" mode="tree,kanban" nolabel="1" colspan="2">
+              <tree string="Membership" editable="bottom">
                 <field name="membership_type" />
                 <field name="membership_time" />
                 <field name="fees_total" />
@@ -65,7 +65,7 @@
                 widget="badge"
                 decoration-warning="state == 'in progress'"
                 decoration-success="state == 'done'"/>
-              </list>
+              </tree>
             </field>
           </group>
         </page>
@@ -73,12 +73,12 @@
       <xpath expr="//notebook/page[@name='membership_details']" position="after">
         <page name="workout_plan" string="Workout Plan" invisible="partner_role == 'trainer' or status != 'joined'">
           <group>
-            <field name="workouts_plan_ids" mode="list,kanban" nolabel="1" colspan="2">
-              <list string="Workout Plan" editable="bottom">
+            <field name="workouts_plan_ids" mode="tree,kanban" nolabel="1" colspan="2">
+              <tree string="Workout Plan" editable="bottom">
                 <field name="workout_id" />
                 <field name="start_date" />
                 <field name="end_date" />
-              </list>
+              </tree>
             </field>
           </group>
         </page>
@@ -86,12 +86,12 @@
       <xpath expr="//notebook/page[@name='workout_plan']" position="after">
         <page name="diet_plan" string="Diet Plan" invisible="partner_role == 'trainer' or status != 'joined'">
           <group>
-            <field name="diet_plan_ids" mode="list,kanban" nolabel="1" colspan="2">
-              <list string="Diet Plan">
+            <field name="diet_plan_ids" mode="tree,kanban" nolabel="1" colspan="2">
+              <tree string="Diet Plan">
                 <field name="name" />
                 <field name="date" />
                 <field name="diet_ids" />
-              </list>
+              </tree>
             </field>
           </group>
         </page>
@@ -101,7 +101,7 @@
   <record id="gym_member_action" model="ir.actions.act_window">
     <field name="name">Member</field>
     <field name="res_model">res.partner</field>
-    <field name="view_mode">kanban,list,form</field>
+    <field name="view_mode">kanban,tree,form</field>
     <field name="domain">[('partner_role', '=', 'member')]</field>
     <field name="help" type="html">
       <p class="o_view_nocontent_smiling_face">
@@ -112,7 +112,7 @@
   <record id="gym_trainer_action" model="ir.actions.act_window">
     <field name="name">Trainer</field>
     <field name="res_model">res.partner</field>
-    <field name="view_mode">kanban,list,form</field>
+    <field name="view_mode">kanban,tree,form</field>
     <field name="domain">[('partner_role', '=', 'trainer')]</field>
     <field name="help" type="html">
       <p class="o_view_nocontent_smiling_face">

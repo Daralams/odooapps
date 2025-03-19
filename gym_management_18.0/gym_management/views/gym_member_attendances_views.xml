@@ -4,12 +4,12 @@
         <field name="name">gym.member.attendances.view.tree</field>
         <field name="model">gym.member.attendances</field>
         <field name="arch" type="xml">
-            <list string="Member Attendance">
+            <tree string="Member Attendance">
                 <field name="name" />
                 <field name="check_in" />
                 <field name="check_out" />
                 <field name="time_spent" />
-            </list>
+            </tree>
         </field>
     </record>
     <record id="gym_member_attendance_view_form" model="ir.ui.view">
@@ -35,8 +35,8 @@
                     <notebook>
                         <page name="activity" string="Activity">
                             <group>
-                                <field name="member_activity_line" mode="list,kanban" nolabel="1" colspan="2">
-                                    <list string="Activity" editable="bottom">
+                                <field name="member_activity_line" mode="tree,kanban" nolabel="1" colspan="2">
+                                    <tree string="Activity" editable="bottom">
                                         <field name="name" />
                                         <field name="exercise" />
                                         <field name="equipment" />
@@ -44,7 +44,7 @@
                                         <field name="repeat" />
                                         <field name="weight" />
                                         <field name="date" />
-                                    </list>
+                                    </tree>
                                 </field>
                             </group>
                         </page>
@@ -61,7 +61,7 @@
     <record id="gym_member_attendances_action" model="ir.actions.act_window">
         <field name="name">Member Attendance</field>
         <field name="res_model">gym.member.attendances</field>
-        <field name="view_mode">list,form</field>
+        <field name="view_mode">tree,form</field>
         <field name="domain">[]</field>
         <field name="context">{}</field>
         <field name="help" type="html">

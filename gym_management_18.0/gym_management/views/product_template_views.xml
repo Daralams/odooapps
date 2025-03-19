@@ -14,13 +14,12 @@
     <record id="product_template_view_form_inherit" model="ir.ui.view">
         <field name="name">product.template.view.form.inherit</field>
         <field name="model">product.template</field>
-        <field name="inherit_id" ref="product.product_template_form_view"/>
+        <field name="inherit_id" ref="product.product_template_only_form_view"/>
         <field name="arch" type="xml">
             <xpath expr="//field[@name='purchase_ok']" position="after">
-                <!-- <label for="gym_equipment_ok"> // gabisa jomok
+                <!-- <label for="gym_equipment_ok"> 
                     <field name="gym_equipment_ok"/>
                 </label> -->
-                <!-- perbaiki bagian ini, tampilannya masih belum sesuai!! -->
                 <field name="gym_equipment_ok" groups="gym_management.group_administor"/> 
             </xpath>
         </field>
