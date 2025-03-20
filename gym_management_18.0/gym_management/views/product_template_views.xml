@@ -17,7 +17,7 @@
         <field name="inherit_id" ref="product.product_template_form_view"/>
         <field name="arch" type="xml">
             <xpath expr="//field[@name='purchase_ok']" position="after">
-                <!-- <label for="gym_equipment_ok">
+                <!-- <label for="gym_equipment_ok"> 
                     <field name="gym_equipment_ok"/>
                 </label> -->
                 <!-- perbaiki bagian ini, tampilannya masih belum sesuai!! -->
