@@ -33,10 +33,10 @@
     <field name="arch" type="xml">
       <xpath expr="//sheet" position="before">
         <header>
-          <button name="action_create_invoice" string="Create Membership Invoice" type="object" class="btn btn-primary" invisible="partner_role == 'trainer' or status == 'waiting' or status == 'left'"/>
-          <button name="action_joined" string="Joined" type="object" class="btn btn-primary" invisible="status == 'joined' or status == 'left'"/>
-          <button name="action_left" string="Left" type="object" class="btn btn-primary" invisible="status == 'waiting' or status == 'left'"/>
-          <button name="action_to_waiting" string="Set to Waiting" type="object" class="oe_highlight" invisible="status == 'waiting'" />
+          <button name="action_create_invoice" string="Create Membership Invoice" type="object" class="btn btn-primary" attrs="{'invisible': ['|', ('partner_role' ,'=', 'trainer'), ('status' ,'=', 'waiting'), ('status' ,'=', 'left')]}"/>
+          <button name="action_joined" string="Joined" type="object" class="btn btn-primary" attrs="{'invisible': ['|', ('status' ,'=', 'joined'),  ('status' ,'=', 'left')]}"/>
+          <button name="action_left" string="Left" type="object" class="btn btn-primary" attrs="{'invisible': ['|', ('status', '=', 'waiting'), ('status', '=', 'left')]}"/>
+          <button name="action_to_waiting" string="Set to Waiting" type="object" class="oe_highlight" attrs="{'invisible': [('status' ,'=', 'waiting')]}" />
           <field name="status" widget="statusbar" statusbar_visible="waiting,joined,left"/>
         </header>
       </xpath>
@@ -44,15 +44,15 @@
         <field name="gender" widget="radio" />
         <field name="age" />
         <field name="partner_role" widget="radio"/>
-        <field name="member_id" invisible="partner_role == 'trainer' or status == 'waiting'"/>
-        <field name="trainer_id" invisible="partner_role == 'member' or status == 'waiting'"/>
-        <field name="support_trainer" widget="many2one_avatar_user" invisible="partner_role == 'trainer' or status == 'waiting'"/>
-        <field name="trainer_skills" widget="many2many_tags" options="{'color_field': 'color'}" invisible="partner_role == 'member' or status == 'waiting'"/>
-        <field name="join_date" invisible="status == 'waiting'" readonly="status == 'left'"/>
-        <field name="left_date" invisible="status == 'waiting' or status == 'joined'"/>
+        <field name="member_id" attrs="{'invisible': ['|', ('partner_role', '=', 'trainer'), ('status', '=' ,'waiting')]}"/>
+        <field name="trainer_id" attrs="{'invisible': ['|', ('partner_role' ,'=', 'member'), ('status', '=', 'waiting')]}"/>
+        <field name="support_trainer" attrs="{'invisible': ['|', ('partner_role', '=', 'trainer'), ('status', '=' ,'waiting')]}"/>
+        <field name="trainer_skills" widget="many2many_tags" options="{'color_field': 'color'}" attrs="{'invisible': ['|', ('partner_role', '=', 'member'), ('status', '=', 'waiting')]}"/>
+        <field name="join_date" attrs="{'invisible': [('status', '=', 'waiting')], 'readonly': [('status', '=', 'left')]}" />
+        <field name="left_date" attrs="{'invisible': ['|', ('status', '=', 'waiting'), ('status', '=', 'joined')]}"/>
       </xpath>
       <xpath expr="//notebook/page[@name='internal_notes']" position="after">
-        <page string="Membership Details" name="membership_details" invisible="partner_role == 'trainer' or status != 'joined'">
+        <page string="Membership Details" name="membership_details" attrs="{'invisible': ['|', ('partner_role', '=', 'trainer'), ('status' ,'!=', 'joined')]}">
           <group>
             <field name="member_detail_ids" mode="tree,kanban" nolabel="1" colspan="2">
               <tree string="Membership" editable="bottom">
@@ -71,7 +71,7 @@
         </page>
       </xpath>
       <xpath expr="//notebook/page[@name='membership_details']" position="after">
-        <page name="workout_plan" string="Workout Plan" invisible="partner_role == 'trainer' or status != 'joined'">
+        <page name="workout_plan" string="Workout Plan" attrs="{'invisible': ['|', ('partner_role', '=', 'trainer'), ('status' ,'!=', 'joined')]}">
           <group>
             <field name="workouts_plan_ids" mode="tree,kanban" nolabel="1" colspan="2">
               <tree string="Workout Plan" editable="bottom">
@@ -84,7 +84,7 @@
         </page>
       </xpath>
       <xpath expr="//notebook/page[@name='workout_plan']" position="after">
-        <page name="diet_plan" string="Diet Plan" invisible="partner_role == 'trainer' or status != 'joined'">
+        <page name="diet_plan" string="Diet Plan" attrs="{'invisible': ['|', ('partner_role', '=', 'trainer'), ('status' ,'!=', 'joined')]}">
           <group>
             <field name="diet_plan_ids" mode="tree,kanban" nolabel="1" colspan="2">
               <tree string="Diet Plan">

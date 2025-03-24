@@ -22,7 +22,7 @@
                     <t t-name="kanban-box">
                         <div class="oe_kanban_card oe_kanban_global_click">
                             <div class="o_kanban_image me-1">
-                                <field name="image" widget="image" alt="Product" invisible="not image" class="o_image_64_contain"/>
+                                <field name="image" widget="image" alt="Product" class="o_image_64_contain"/>
                             </div>
                             <div class="oe_kanban_details">
                                 <div class="o_kanban_record_top mb-0">
