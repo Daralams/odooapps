@@ -30,3 +30,10 @@ class GymMembershipDetail(models.Model):
         if vals.get('name', _('New')) == _('New'):
             vals['name'] = self.env['ir.sequence'].next_by_code('gym.membership.detail')
         return super(GymMembershipDetail, self).create(vals)
+
+    def action_open_related_member_name(self):
+        action = self.env['ir.actions.actions']._for_xml_id('gym_management.gym_member_action')
+        view_id = self.env.ref('gym_management.res_partner_view_form_inherit').id
+        action['res_id'] = self.membership_id.id
+        action['views'] = [[view_id, 'form']]
+        return action
