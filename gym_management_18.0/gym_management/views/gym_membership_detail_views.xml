@@ -15,7 +15,7 @@
         <field name="name">gym.membership.detail.view.list</field>
         <field name="model">gym.membership.detail</field>
         <field name="arch" type="xml">
-            <list string="Membership Detail">
+            <list string="Membership Detail" decoration-danger="active == False">
                 <field name="name" />
                 <field name="membership_id" />
                 <field name="membership_type" />
@@ -59,6 +59,7 @@
                             <field name="start_date" readonly="state == 'done'"/>
                             <field name="end_date" readonly="state == 'done'"/>
                             <field name="invoice_number" />
+                            <field name="active" readonly="True"/>
                         </group>
                     </group>
                 </sheet>

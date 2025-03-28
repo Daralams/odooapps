@@ -16,6 +16,7 @@ class GymMembershipDetail(models.Model):
         ('in progress', 'In Progress'),
         ('done', 'Done'),
     ], string="State", default="draft", copy=False)
+    active = fields.Boolean(string="Active" ,default=True)
     invoice_number = fields.Char(string="Invoice", readonly=True, copy=False)
 
     @api.depends('fees_total')
@@ -37,3 +38,11 @@ class GymMembershipDetail(models.Model):
         action['res_id'] = self.membership_id.id
         action['views'] = [[view_id, 'form']]
         return action
+
+    def check_membership_expired(self):
+        """ Check date end date of membership """
+        date_now = fields.Date.today()
+        membership_expired = self.search([('state', '=', 'done'), ('end_date', '<', date_now)])
+        if membership_expired:        
+            for rec in membership_expired:
+                rec.active = False

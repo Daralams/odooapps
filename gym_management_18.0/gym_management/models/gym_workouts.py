@@ -10,4 +10,5 @@ class GymWorkouts(models.Model):
     workout_days = fields.Many2many('gym.workout.days', string="Workout Days")
     description = fields.Html(
         'Description', translate=True)
+    active = fields.Boolean(default=True)
     workout_ids = fields.One2many(comodel_name='gym.workouts.line', inverse_name='workout_id', string="Workouts Line")
