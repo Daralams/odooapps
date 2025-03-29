@@ -24,7 +24,6 @@
     'data': [
         'security/ir.model.access.csv',
         'security/security.xml',
-        'views/ir_sequence_data.xml',
         'views/gym_trainer_attendances_views.xml',
         'views/gym_member_attendances_views.xml',
         'views/gym_member_activity_views.xml',
@@ -42,6 +41,7 @@
         'views/gym_member_analysis_views.xml',
         'views/gym_trainer_analysis_views.xml',
         'views/res_partner_views.xml',
+
         'report/gym_membercard_templates.xml',
         'report/gym_membercard_reports.xml',
         'report/gym_trainercard_templates.xml',
@@ -52,6 +52,10 @@
         'report/gym_exercise_reports.xml',
         'report/gym_activity_reports.xml', 
         'report/gym_activity_templates.xml',
+
+        'data/ir_cron.xml',
+        'data/ir_sequence_data.xml',
+
         'wizard/gym_activity_report_views.xml',
         'views/gym_menu_views.xml',
         'views/templates.xml',
