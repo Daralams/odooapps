@@ -24,7 +24,6 @@
     'data': [
         'security/ir.model.access.csv',
         'security/security.xml',
-        'views/ir_sequence_data.xml',
         'views/gym_trainer_attendances_views.xml',
         'views/gym_member_attendances_views.xml',
         'views/gym_member_activity_views.xml',
@@ -55,6 +54,7 @@
         'report/gym_activity_templates.xml',
 
         'data/ir_cron.xml',
+        'data/ir_sequence_data.xml',
 
         'wizard/gym_activity_report_views.xml',
         'views/gym_menu_views.xml',
