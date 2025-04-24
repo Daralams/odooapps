@@ -13,6 +13,10 @@
         <filter name="joined" string="Joined" domain="[('status', '=', 'joined')]"/>
         <filter name="left" string="Left" domain="[('status', '=', 'left')]"/>
         <filter name="expired" string="Expired" domain="[('status', '=', 'expired')]"/>
+        <searchpanel>
+          <field name="gender" icon="fa-user" string="Gender" select="multi"/>
+          <field name="status" icon="fa-id-card" string="Membership" invisible="partner_role == 'trainer'" select="multi"/>
+        </searchpanel>
       </xpath>
     </field>
   </record>
