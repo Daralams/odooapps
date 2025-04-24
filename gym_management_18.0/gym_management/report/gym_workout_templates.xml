@@ -4,6 +4,14 @@
         <t t-call="web.html_container">
             <t t-foreach="docs" t-as="o">
                 <t t-call="web.external_layout">
+                    <!-- header company -->
+                    <div style="margin-bottom: 50px;">
+                        <div style="display: flex;">
+                            <img t-att-src="'/gym_management/static/description/icon.png'" style="max-height:50px;"/>
+                            <div t-field="o.user_id" t-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": False}'/>
+                         </div>
+                        <hr/>
+                    </div>
                     <div class="page" style="text-align: center;">
                         <h2 style="font-weight: bold; text-align: center;" t-field="o.name"></h2>
                         <p style="text-align: left;">
