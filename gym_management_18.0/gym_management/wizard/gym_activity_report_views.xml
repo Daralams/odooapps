@@ -17,7 +17,11 @@
                     <footer>
                         <button name="action_gym_activity_report_pdf" type="object"
                             class="btn-primary">
-                            <i class="fa fa-download mr-2"/> Download PDF
+                            <i class="fa fa-file-pdf-o mr-2"/> Download PDF
+                        </button>
+                        <button name="action_gym_activity_report_excel" type="object"
+                            class="btn-primary">
+                            <i class="fa fa-file-excel-o mr-2"/> Download EXCEL
                         </button>
                         <button special="cancel" string="Cancel"
                             class="btn-secondary"/>

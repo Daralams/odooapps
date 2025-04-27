@@ -13,7 +13,9 @@
         <filter name="joined" string="Joined" domain="[('status', '=', 'joined')]"/>
         <filter name="left" string="Left" domain="[('status', '=', 'left')]"/>
         <filter name="expired" string="Expired" domain="[('status', '=', 'expired')]"/>
-        <searchpanel>
+        <!-- nanti coba cari tau supaya searchpanel tidak tampil di contact module -->
+        <!-- <searchpanel invisible="context.get('gym_module', False)"> -->
+        <searchpanel invisible="'context.gym_module', '=', False">
           <field name="gender" icon="fa-user" string="Gender" select="multi"/>
           <field name="status" icon="fa-id-card" string="Membership" invisible="partner_role == 'trainer'" select="multi"/>
         </searchpanel>
@@ -118,6 +120,7 @@
     <field name="res_model">res.partner</field>
     <field name="view_mode">kanban,list,form</field>
     <field name="domain">[('partner_role', '=', 'trainer')]</field>
+    <field name="context">{'gym_module': True}</field>
     <field name="help" type="html">
       <p class="o_view_nocontent_smiling_face">
             Create a Gym Trainer
