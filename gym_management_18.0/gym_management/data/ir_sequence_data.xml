@@ -12,7 +12,7 @@
         </record>
         <record id="ir_sequence_gym_trainer_id" model="ir.sequence">
             <field name="name">Gym Trainer ID</field>
-            <field name="code">res.partner.trainer</field>
+            <field name="code">hr.employee.trainer</field>
             <field name="prefix">Trainer/%(year)s/</field>
             <field name="padding">5</field>
             <field name="number_next">1</field>

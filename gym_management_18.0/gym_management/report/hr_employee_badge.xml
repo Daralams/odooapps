@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="hr_employee_badge_template_inherit_gym_management" name="hr_employee_badge_inherit" inherit_id="hr.print_employee_badge">
+        <xpath expr="//td/table/tr[@style='height: 100%;']" position="before">
+            <tr>
+                <td style="text-align: left;">
+                    Email:
+                    <span style="font-size: 10pt;" t-out="employee.work_email"></span>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: left;"> 
+                    Phone:
+                    <span style="font-size: 10pt;" t-out="employee.work_phone"></span>
+                </td>
+            </tr>
+        </xpath>
+        <xpath expr="//td/table/tr[@style='height: 100%;']" position="replace">
+            <tr style="height: 100%;">
+                <td style="vertical-align: bottom; padding-bottom: 4pt;">
+                    <img t-if="employee.barcode"
+                        style="width:200px;height:35px;"
+                        t-att-src="'/report/barcode/?barcode_type=%s&amp;value=%s&amp;width=%s&amp;height=%s'%('EAN13',employee.barcode,265,80)"/>
+                </td>
+            </tr>
+        </xpath>
+    </template>
+</odoo>

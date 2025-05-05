@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="hr_employee_view_kaban_inherit_gym_management" model="ir.ui.view">
+        <field name="name">hr.employee.view.kaban.inherit</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.hr_kanban_view_employees"/>
+        <field name="arch" type="xml">
+            <xpath expr="//kanban/field[@name='company_id']" position="after">
+                <field name="is_trainer" />
+            </xpath>
+            <xpath expr="//aside[@class='o_kanban_aside_full']" position="before">
+                <div>
+                    <t t-if="record.is_trainer.raw_value">
+                        <widget name="web_ribbon" title="gym trainer" bg_color="text-bg-success" />
+                    </t>
+                </div>
+            </xpath>
+        </field>
+    </record>
+    <record id="hr_employee_view_form_inherit_gym_management" model="ir.ui.view">
+        <field name="name">hr.employee.view.form.inherit</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//group/field[@name='work_email']" position="before">
+                <field name="is_trainer" />
+                <field name="trainer_id" invisible="is_trainer != True"/>
+            </xpath>
+            <xpath expr="//group/field[@name='coach_id']" position="after">
+                <field name="active" widget="boolean_toggle"/>
+            </xpath>
+        </field>
+    </record>
+    <record id="gym_trainer_action" model="ir.actions.act_window">
+        <field name="name">Trainer</field>
+        <field name="res_model">hr.employee</field>
+        <field name="view_mode">kanban,list,form</field>
+        <field name="domain">[('company_id', 'in', allowed_company_ids), ('is_trainer', '=', True), ('active', '=', True)]</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a Gym Trainer
+              </p>
+        </field>
+    </record>
+</odoo>

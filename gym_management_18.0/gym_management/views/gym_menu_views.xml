@@ -42,24 +42,13 @@
         action="gym_membership_detail_action"
         parent="gym_management_membership_nav_menu"
     />
-    <!-- member and trainer attendances -->
+    <!-- gym attendances -->
     <menuitem
         id="gym_management_attendances_nav_menu"
         name="Attendances"
         parent="gym_management_root_menu"
+        action="gym_attendances_action"
         sequence="7"
-    />
-    <menuitem
-        id="gym_management_trainer_attendances_sub_menu"
-        name="Trainer"
-        action="gym_trainer_attendances_action"
-        parent="gym_management_attendances_nav_menu"
-    />
-    <menuitem
-        id="gym_management_member_attendances_sub_menu"
-        name="Member"
-        action="gym_member_attendances_action"
-        parent="gym_management_attendances_nav_menu"
     />
     <!-- gym workouts and exercise -->
     <menuitem

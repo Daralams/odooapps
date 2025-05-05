@@ -4,7 +4,7 @@
         <field name="name">gym.member.activity.view.tree</field>
         <field name="model">gym.member.activity</field>
         <field name="arch" type="xml">
-            <list string="Gym Member Activity" class="header_custom">
+            <list string="Gym Member Activity">
                 <field name="name" />
                 <field name="exercise" />
                 <field name="equipment" />

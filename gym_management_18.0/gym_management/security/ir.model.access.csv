@@ -1,6 +1,5 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_gym_trainer_attendances_id,access.gym.trainer.attendances,model_gym_trainer_attendances,base.group_user,1,1,1,1
-access_gym_member_attendances_id,access.gym.member.attendances,model_gym_member_attendances,base.group_user,1,1,1,1
+
 access_gym_member_activity_id,access.gym.member.activity,model_gym_member_activity,base.group_user,1,1,1,1
 
 access_gym_partner_id,access.gym.partner,model_res_partner,base.group_user,1,1,1,1

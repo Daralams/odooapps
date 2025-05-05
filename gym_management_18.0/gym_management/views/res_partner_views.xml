@@ -11,13 +11,11 @@
         <separator/>
         <filter name="waiting" string="Waiting" domain="[('status', '=', 'waiting')]"/>
         <filter name="joined" string="Joined" domain="[('status', '=', 'joined')]"/>
-        <filter name="left" string="Left" domain="[('status', '=', 'left')]"/>
+        <filter name="exit" string="exit" domain="[('status', '=', 'exit')]"/>
         <filter name="expired" string="Expired" domain="[('status', '=', 'expired')]"/>
-        <!-- nanti coba cari tau supaya searchpanel tidak tampil di contact module -->
-        <!-- <searchpanel invisible="context.get('gym_module', False)"> -->
         <searchpanel invisible="'context.gym_module', '=', False">
           <field name="gender" icon="fa-user" string="Gender" select="multi"/>
-          <field name="status" icon="fa-id-card" string="Membership" invisible="partner_role == 'trainer'" select="multi"/>
+          <field name="status" icon="fa-id-card" string="Membership" invisible="is_member in False" select="multi"/>
         </searchpanel>
       </xpath>
     </field>
@@ -39,26 +37,24 @@
     <field name="arch" type="xml">
       <xpath expr="//sheet" position="before">
         <header>
-          <button name="action_create_invoice" string="Create Membership Invoice" type="object" class="btn btn-primary" invisible="partner_role == 'trainer' or status == 'waiting' or status == 'left'"/>
-          <button name="action_joined" string="Joined" type="object" class="btn btn-primary" invisible="status == 'joined' or status == 'left'"/>
-          <button name="action_left" string="Left" type="object" class="btn btn-primary" invisible="status == 'waiting' or status == 'left'"/>
-          <button name="action_to_waiting" string="Set to Waiting" type="object" class="oe_highlight" invisible="status == 'waiting'" />
-          <field name="status" widget="statusbar" statusbar_visible="waiting,joined,left"/>
+          <button name="action_create_invoice" string="Create Membership Invoice" type="object" class="btn btn-primary" invisible="is_member != True or status == 'waiting' or status == 'exit'"/>
+          <button name="action_joined" string="Joined" type="object" class="btn btn-primary" invisible="status == 'joined' or status == 'exit'"/>
+          <button name="action_exit" string="Exit" type="object" invisible="status == 'waiting' or status == 'exit'"/>
+          <button name="action_to_waiting" string="Set to Waiting" type="object" invisible="status == 'waiting'" />
+          <field name="status" widget="statusbar" statusbar_visible="waiting,joined,exit"/>
         </header>
       </xpath>
       <xpath expr="//span[@name='address_name']" position="before">
         <field name="gender" widget="radio" />
         <field name="age" />
-        <field name="partner_role" widget="radio"/>
-        <field name="member_id" invisible="partner_role == 'trainer' or status == 'waiting'"/>
-        <field name="trainer_id" invisible="partner_role == 'member' or status == 'waiting'"/>
-        <field name="support_trainer" widget="many2one_avatar_user" invisible="partner_role == 'trainer' or status == 'waiting'"/>
-        <field name="trainer_skills" widget="many2many_tags" options="{'color_field': 'color'}" invisible="partner_role == 'member' or status == 'waiting'"/>
-        <field name="join_date" invisible="status == 'waiting'" readonly="status == 'left'"/>
-        <field name="left_date" invisible="status == 'waiting' or status == 'joined'"/>
+        <field name="is_member"/>
+        <field name="member_id" invisible="is_member != True or status == 'waiting'"/>
+        <field name="support_trainer" widget="many2one_avatar_user" invisible="is_member != True or status == 'waiting'"/>
+        <field name="join_date" invisible="status == 'waiting'" readonly="status == 'exit'"/>
+        <field name="exit_date" invisible="status == 'waiting' or status == 'joined'"/>
       </xpath>
       <xpath expr="//notebook/page[@name='internal_notes']" position="after">
-        <page string="Membership Details" name="membership_details" invisible="partner_role == 'trainer' or status != 'joined'">
+        <page string="Membership Details" name="membership_details" invisible="is_member != True or status != 'joined'">
           <group>
             <field name="member_detail_ids" mode="list,kanban" nolabel="1" colspan="2">
               <list string="Membership" editable="bottom">
@@ -77,7 +73,7 @@
         </page>
       </xpath>
       <xpath expr="//notebook/page[@name='membership_details']" position="after">
-        <page name="workout_plan" string="Workout Plan" invisible="partner_role == 'trainer' or status != 'joined'">
+        <page name="workout_plan" string="Workout Plan" invisible="is_member != True or status != 'joined'">
           <group>
             <field name="workouts_plan_ids" mode="list,kanban" nolabel="1" colspan="2">
               <list string="Workout Plan" editable="bottom">
@@ -90,7 +86,7 @@
         </page>
       </xpath>
       <xpath expr="//notebook/page[@name='workout_plan']" position="after">
-        <page name="diet_plan" string="Diet Plan" invisible="partner_role == 'trainer' or status != 'joined'">
+        <page name="diet_plan" string="Diet Plan" invisible="is_member != True or status != 'joined'">
           <group>
             <field name="diet_plan_ids" mode="list,kanban" nolabel="1" colspan="2">
               <list string="Diet Plan">
@@ -108,22 +104,10 @@
     <field name="name">Member</field>
     <field name="res_model">res.partner</field>
     <field name="view_mode">kanban,list,form</field>
-    <field name="domain">[('partner_role', '=', 'member')]</field>
+    <field name="domain">[('is_member', '=', True)]</field>
     <field name="help" type="html">
       <p class="o_view_nocontent_smiling_face">
             Create a Gym Member
-          </p>
-    </field>
-  </record>
-  <record id="gym_trainer_action" model="ir.actions.act_window">
-    <field name="name">Trainer</field>
-    <field name="res_model">res.partner</field>
-    <field name="view_mode">kanban,list,form</field>
-    <field name="domain">[('partner_role', '=', 'trainer')]</field>
-    <field name="context">{'gym_module': True}</field>
-    <field name="help" type="html">
-      <p class="o_view_nocontent_smiling_face">
-            Create a Gym Trainer
           </p>
     </field>
   </record>

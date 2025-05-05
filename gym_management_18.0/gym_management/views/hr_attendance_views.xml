@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="hr_attendance_view_search_inherit_gym_management" model="ir.ui.view">
+        <field name="name">hr.attendance.view.search.inherit</field>
+        <field name="model">hr.attendance</field>
+        <field name="inherit_id" ref="hr_attendance.hr_attendance_view_filter"/>
+        <field name="arch" type="xml">
+            <xpath expr="//group/filter[@name='employee']" position="attributes">
+                <attribute name="string">Trainer</attribute>
+            </xpath>
+        </field>
+    </record>
+    <record id="hr_attendance_view_tree_inherit_gym_management" model="ir.ui.view">
+        <field name="name">hr.attendance.view.tree.inherit</field>
+        <field name="model">hr.attendance</field>
+        <field name="inherit_id" ref="hr_attendance.view_attendance_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//list/field[@name='employee_id']" position="attributes">
+                <attribute name="string">Trainer</attribute>
+                <attribute name="domain">[('is_trainer', '=', True)]</attribute>
+            </xpath>
+        </field>
+    </record>
+    <record id="hr_attendance_view_form_inherit_gym_management" model="ir.ui.view">
+        <field name="name">hr.attendance.view.form.inherit</field>
+        <field name="model">hr.attendance</field>
+        <field name="inherit_id" ref="hr_attendance.hr_attendance_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//group/field[@name='employee_id']" position="attributes">
+                <attribute name="string">Trainer</attribute>
+            </xpath>
+            <xpath expr="//group" position="after">
+                <notebook>
+                    <page name="member_activity" string="Member Activity">
+                        <group>
+                            <field name="member_activity_ids" mode="list,kanban" nolabel="1" colspan="2">
+                                <list string="Member Activity" editable="bottom">
+                                    <field name="name" />
+                                    <field name="exercise" />
+                                    <field name="equipment" />
+                                    <field name="sets" />
+                                    <field name="repeat" />
+                                    <field name="weight" />
+                                    <field name="date" />
+                                </list>
+                            </field>
+                        </group>
+                    </page>
+                </notebook>
+            </xpath>
+        </field>
+    </record>
+    <record id="gym_attendances_action" model="ir.actions.act_window">
+        <field name="name">Gym Attendance</field>
+        <field name="res_model">hr.attendance</field>
+        <field name="view_mode">list,form</field>
+        <field name="context">
+            {                
+                "search_default_groupby_name": 1,               
+                "search_default_employee": 2            
+            }        
+        </field>
+        <field name="search_view_id" ref="hr_attendance.hr_attendance_view_filter"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Start recording your attendance
+            </p>
+        </field>
+    </record>
+</odoo>

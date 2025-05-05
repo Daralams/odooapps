@@ -5,8 +5,8 @@ class GymMemberActivity(models.Model):
     _description = 'Gym Member Activity'
     _order = 'id desc'
 
-    attendance_id = fields.Many2one('gym.member.attendances', ondelete="cascade")
-    name = fields.Many2one('res.partner', string="Member", domain=[('partner_role', '=', 'member'), ('status', '=', 'joined')], ondelete="cascade")
+    attendance_id = fields.Many2one('hr.attendance', string="Attendance", ondelete="cascade")   
+    name = fields.Many2one('res.partner', string="Member", domain=[('is_member', '=', True), ('status', '=', 'joined')], ondelete="cascade")
     exercise = fields.Many2one('gym.workouts.line', string="Exercise", ondelete="cascade")
     equipment = fields.Many2one('product.template', string="Equipment", domain=[('gym_equipment_ok', '=', True)], ondelete="cascade") 
     sets = fields.Integer(string="Sets")

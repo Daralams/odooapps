@@ -2,19 +2,18 @@
 <odoo>
     <record id="gym_trainer_analysis_view_graph" model="ir.ui.view">
         <field name="name">gym.trainer.analysis.view.graph</field>
-        <field name="model">res.partner</field>
+        <field name="model">hr.employee</field>
         <field name="arch" type="xml">
             <graph string="Gym Trainer Analysis" type="bar">
-                <field name="status" />
-                <field name="join_date" />
+                <field name="is_trainer" />
             </graph>
         </field>
     </record>
     <record id="gym_trainer_analysis_action" model="ir.actions.act_window">
         <field name="name">Gym Trainer Analysis</field>
-        <field name="res_model">res.partner</field>
+        <field name="res_model">hr.employee</field>
         <field name="view_mode">graph</field>
-        <field name="domain">[('partner_role', '=', 'trainer')]</field>
+        <field name="domain">[]</field>
         <field name="context">{}</field>
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">

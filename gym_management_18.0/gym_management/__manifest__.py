@@ -19,13 +19,12 @@
     'category': 'Sport',
     'version': '0.1',
     # any module necessary for this one to work correctly
-    'depends': ['base', 'contacts', 'account', 'stock'],
+    'depends': ['base', 'contacts', 'account', 'stock', 'hr_attendance'],
     # always loaded
     'data': [
         'security/ir.model.access.csv',
         'security/security.xml',
-        'views/gym_trainer_attendances_views.xml',
-        'views/gym_member_attendances_views.xml',
+        'views/hr_attendance_views.xml',
         'views/gym_member_activity_views.xml',
         'views/gym_membership_type_views.xml',
         'views/gym_membership_detail_views.xml',
@@ -41,11 +40,13 @@
         'views/gym_member_analysis_views.xml',
         'views/gym_trainer_analysis_views.xml',
         'views/res_partner_views.xml',
+        'views/hr_employee_views.xml',
 
         'report/gym_membercard_templates.xml',
         'report/gym_membercard_reports.xml',
-        'report/gym_trainercard_templates.xml',
-        'report/gym_trainercard_reports.xml',
+        'report/hr_employee_badge.xml',
+        # 'report/gym_trainercard_templates.xml',
+        # 'report/gym_trainercard_reports.xml',
         'report/gym_workout_templates.xml',
         'report/gym_workout_reports.xml',
         'report/gym_exercise_templates.xml',

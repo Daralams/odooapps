@@ -49,9 +49,9 @@
                     </div>
                     <group>
                         <field name="image" widget="image" class="oe_avatar" nolabel="1" readonly="not active"/>
-                        <field name="support_trainer" readonly="not active"/>
+                        <field name="support_trainer" readonly="not active" widget="many2one_avatar_user"/>
                         <field name="workout_days" widget="many2many_tags" options="{'color_field': 'color'}" readonly="not active"/>
-                        <field name="active"/>
+                        <field name="active" widget="boolean_toggle"/>
                     </group>
                     <notebook>
                         <page name="workouts-line" string="Workouts Line" readonly="not active">
